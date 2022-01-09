@@ -16,21 +16,23 @@
   <meta name="author" content="Andy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="This is good Let’s show what we got for this one">
+    <meta name="description" content="前言 这是我在刷今天的leetcode题目 131.Palindrome Partitioning 学到的技巧，在这里记录一下。  问题 给与一个String, 我们要产出他的所有的partitioning。 Example 1 123Input: &quot;ac&quot;Output: [[&quot;a&quot;,&quot;c],  [&quot;ac&quot;]] Example">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test_post">
-<meta property="og:url" content="https://andydiantu.github.io/2021/12/29/test-post/index.html">
+<meta property="og:title" content="[Leetcode总结]生成一个String所有partitioning">
+<meta property="og:url" content="https://andydiantu.github.io/2022/01/09/partitionining2/index.html">
 <meta property="og:site_name" content="Andy的小站">
-<meta property="og:description" content="This is good Let’s show what we got for this one">
+<meta property="og:description" content="前言 这是我在刷今天的leetcode题目 131.Palindrome Partitioning 学到的技巧，在这里记录一下。  问题 给与一个String, 我们要产出他的所有的partitioning。 Example 1 123Input: &quot;ac&quot;Output: [[&quot;a&quot;,&quot;c],  [&quot;ac&quot;]] Example">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-29T18:04:30.000Z">
-<meta property="article:modified_time" content="2021-12-29T18:11:13.138Z">
+<meta property="og:image" content="https://andydiantu.github.io/2022/01/09/partitionining2/pic.jpg">
+<meta property="article:published_time" content="2022-01-09T16:52:32.000Z">
+<meta property="article:modified_time" content="2022-01-09T16:53:47.026Z">
 <meta property="article:author" content="Andy">
-<meta property="article:tag" content="Testing">
+<meta property="article:tag" content="Leetcode, Algorithms">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://andydiantu.github.io/2022/01/09/partitionining2/pic.jpg">
   
   
-  <title>test_post - Andy的小站</title>
+  <title>[Leetcode总结]生成一个String所有partitioning - Andy的小站</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="test_post">
+            <span class="h2" id="subtitle" title="[Leetcode总结]生成一个String所有partitioning">
               
             </span>
 
@@ -186,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-29 18:04" pubdate>
-        2021年12月29日 晚上
+      <time datetime="2022-01-09 16:52" pubdate>
+        2022年1月9日 下午
       </time>
     </span>
   
@@ -197,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      38 字
+      1.3k 字
     </span>
   
 
@@ -206,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      11 分钟
     </span>
   
 
@@ -235,12 +237,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">test_post</h1>
+            <h1 style="display: none">[Leetcode总结]生成一个String所有partitioning</h1>
             
             <div class="markdown-body">
-              <h3 id="this-is-good"><a class="markdownIt-Anchor" href="#this-is-good"></a> This is good</h3>
-<p>Let’s show what we got for this one</p>
-
+              <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>这是我在刷今天的leetcode题目 <a target="_blank" rel="noopener" href="https://leetcode.com/problems/palindrome-partitioning/">131.Palindrome Partitioning</a> 学到的技巧，在这里记录一下。</p>
+<h1 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h1>
+<p>给与一个String, 我们要产出他的所有的partitioning。</p>
+<p><strong>Example 1</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">Input: <span class="hljs-string">&quot;ac&quot;</span><br><br>Output: <span class="hljs-string">[[&quot;a&quot;,&quot;c],  [&quot;ac&quot;]]</span><br></code></pre></td></tr></table></figure>
+<p><strong>Example 2</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vim">Inpu<span class="hljs-variable">t:</span> <span class="hljs-string">&quot;abc&quot;</span><br><br>Outpu<span class="hljs-variable">t:</span> [[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c], [&quot;</span><span class="hljs-keyword">a</span><span class="hljs-string">&quot;,&quot;</span>bc<span class="hljs-string">&quot;], [&quot;</span><span class="hljs-keyword">ab</span><span class="hljs-string">&quot;, &quot;</span><span class="hljs-keyword">c</span><span class="hljs-string">&quot;], [&quot;</span><span class="hljs-keyword">abc</span><span class="hljs-comment">&quot;]]</span><br></code></pre></td></tr></table></figure>
+<h1 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h1>
+<p>我们可以使用递归来解决这个问题，对于partitioning这个问题，我们可以很容易的辨别出很多更小规模的问题。比如对于整个String，我们可以求整个String的全部的partitioning，也可以求从这个String的一个subString的全部的partitioning。在分辨出了sub problem之后，我们就可以寻找不同规模问题之间的互通之处。我们选择了top down的方式来解决，从最大规模的问题层层递归到最小规模，最后求解。</p>
+<p>对于每个String，我们先取它从头开始的每一种substring，对于一下的例子来说就是 [“a”, “ab”, “abc”]，然后对于剩下的String 递归套用一样的方法。最后的结果就会是全部的partitioning。</p>
+<p><img src="/2022/01/09/partitionining2/pic.jpg" srcset="/img/loading.gif" lazyload alt="alt"></p>
+<h1 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;String&gt;&gt; allPartitioning (String s)&#123;<br>    List&lt;List&lt;String&gt;&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br><br>    dfs(ans, <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;(), <span class="hljs-number">0</span>, s);<br><br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span> <span class="hljs-params">(List&lt;List&lt;String&gt;&gt; ans, List&lt;String&gt; currList, <span class="hljs-keyword">int</span> start, String s)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(start &gt;= s.length())&#123;<br>        ans.add(<span class="hljs-keyword">new</span> ArrayList&lt;String&gt;(currList));<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> end = start; end &lt; s.length(); end++)&#123;<br>            currList.add(s.subString(start,end+<span class="hljs-number">1</span>));<br>            dfs(ans,currList, start + <span class="hljs-number">1</span>, s);<br>            <span class="hljs-comment">// backtrack and remove the substring we just added.</span><br>            currList.remove(currList.size()-<span class="hljs-number">1</span>); <br>        &#125;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -250,7 +263,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Testing/">Testing</a>
+                      <a class="hover-with-bg" href="/tags/Leetcode-Algorithms/">Leetcode, Algorithms</a>
                     
                   </div>
                 
@@ -267,9 +280,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/12/30/Complement/">
+                      <a href="/2022/01/09/FloydAlgorithms/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[leetcode总结] 题目 476 与 Int 边际值</span>
+                        <span class="hidden-mobile">Leetcode 287与Floyd判圈算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -277,8 +290,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/29/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2021/12/30/Complement/">
+                        <span class="hidden-mobile">[leetcode总结] 题目 476 与 Int 边际值</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
